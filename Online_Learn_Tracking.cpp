@@ -37,7 +37,7 @@ using namespace std;
 //------------------------------- GLOBALS -------------------------------------------------
 
 //vector< Rect_<int> > faces;
-vector< DetectionBasedTracker::Object > faces;
+vector< DetectionBasedTracker::Object > faces;      // Object is a pair<Rect,int>.Hence use Object.first for image.
 vector<cv::Mat> learnt_face;
 vector<int> learnt_label;
 cv::Rect_<int> face_i;
@@ -116,7 +116,7 @@ int main( int argc,char* argv[])
         int i = 0;
         for(vector<DetectionBasedTracker::Object>::iterator it = faces.begin() ; it != faces.end() ; it++ ,i ++)
         {
-
+            //Using STL iterators.pointer to traverse through STL data structures. (*it) is the image,int pair ie. faces[i]
             if(i>=largest_label) largest_label = i;
             //faces is a pair<Rect,int> hence faces.first and faces.second
             face_i = it->first;
